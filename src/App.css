@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+body {
+    background-color: gainsboro;
+    margin: 0;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+    max-width: 900px;
+    margin: 1rem 2rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card-grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-radius: .25rem;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .3);
+    background-color: whitesmoke;
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateY(var(--rotate-y, 0)) 
+    translateY(var(--translate-y, 0));
+    cursor: pointer;
+    transition: 150ms;
+}
+.card.flip {
+    --rotate-y: 180deg;
 }
 
-.App-link {
-  color: #61dafb;
+.card:hover {
+    --translate-y: -2px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card .front{
+    left: 0;
+}
+
+.card .front
+.card .back {
+    position: absolute;
+    padding: 1rem;
+    
+}
+
+.card .back {
+    transform: rotateY(180deg);  
+    backface-visibility: hidden;
+
+}
+.flip .front {  
+    backface-visibility: hidden;
+}
+
+.flashcard-options {
+    margin-top: .5rem;
+}
+
+.flashcard-option {
+margin-top: .25rem;
+color: darkslategray;
+font-size: .75rem;
+}
+
+.flashcard-option:first-child{
+    margin-top: 0;
 }
